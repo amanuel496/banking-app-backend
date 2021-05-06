@@ -32,10 +32,10 @@ try {
 }
 mongoose.set('useCreateIndex', true);
 
-// const customerRouter = require('./routes/customers');
-// const EmployeeRouter = require('./routes/employees');
-// app.use('/customers', customerRouter);
-// app.use('/employee', EmployeeRouter);
+const customerRouter = require('./routes/customers');
+const EmployeeRouter = require('./routes/employees');
+app.use('/customers', customerRouter);
+app.use('/employee', EmployeeRouter);
 
 const path = require("path");
 
