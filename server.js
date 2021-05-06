@@ -32,13 +32,19 @@ try {
 }
 mongoose.set('useCreateIndex', true);
 
-const customerRouter = require('./routes/customers');
-const EmployeeRouter = require('./routes/employees');
-app.use('/customers', customerRouter);
-app.use('/employee', EmployeeRouter);
+// const customerRouter = require('./routes/customers');
+// const EmployeeRouter = require('./routes/employees');
+// app.use('/customers', customerRouter);
+// app.use('/employee', EmployeeRouter);
+
+const path = require("path");
+
+app.use(express.static(path.join(__dirname, 'build')));
 
 
-app.listen(process.env.PORT || 8080);
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+app.listen(process.env.PORT || 8081);
 module.exports = app; // for testing only
-
 
